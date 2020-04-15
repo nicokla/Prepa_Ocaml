@@ -1,0 +1,7 @@
+Algorithmes : contient les algorithmes pour l'implémentation 1 des graphes.
+Autres types et implémentation : contient des algorithmes avec d'autres implémentation des graphes.
+Essais : contient des fichiers non terminés, en construction.
+Partie graphique :  contient un programme qui permet de manipuler les graphes avec une interface graphique,
+  pour l'implémentation 1.
+Sauvegardes : Sauvegardes des programmes et de dessins de graphes particuliers.
+Types : Définition des types nécessaires pour l'implémentation 1.

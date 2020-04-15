@@ -1,0 +1,68 @@
+
+let strategie v max =
+  let M = string_of_int max and v2 = string_of_vect v and
+  pos = (test2 v max) in let pos2 = string_of_vect pos and
+    m = periode_gen pos max in
+      let a = fst m and b = snd m in let a2 = string_of_int a
+        and b2 = string_of_int b and
+        m1 = string_of_vect (sub_vect pos 0 a) and
+        per = (sub_vect pos (a) b) in
+          let per2 = string_of_vect (per) (* and
+n=cherche_n 0 (fst !m) (snd !m) *) in
+            ecrire ("\n" ^ M ^ "   " ^ v2) fichier1; (*max, vecteur des déplacements*)
+            if a <> 0 then ecrire ("\n" ^ a2 ^ "   " ^ m1) fichier1;
+            ecrire ("\n" ^ b2 ^ "   " ^ per2 ^ "\n") fichier1;
+let l= cherche_n 0 per b in
+						ecrire (string_of_list(l)^"\n") fichier1;
+			(**)	ecrire (string_of_int(list_length l)^"\n") fichier1;
+(*if b<>0 then ecrire (string_of_float(flo (list_length l)/.flo b)^"\n") fichier1;*)
+            (a, b);;
+
+let strategie2 (*mode basique*) v max=
+let st1 = string_of_int and st2 = string_of_vect 
+and k=test2 v max in
+ecrire ("\n" ^ st1 max ^ "   " ^ st2 v ^ "\n" ^ st2 k ^"\n" ) fichier1;;
+
+(*strategie [|2;5;11;14;31;43;60;101|] 300;;*)
+
+
+let strategie4 v (*mode tor*)max=
+let M = string_of_int max and v2 = string_of_vect v and
+  pos = (test v max) in let pos2 = string_of_vect pos and
+    m = periode_gen pos max in
+      let a = fst m and b = snd m in let a2 = string_of_int a
+        and b2 = string_of_int b and
+        m1 = string_of_vect (sub_vect pos 0 a) and
+        per = (sub_vect pos (a) b) in
+          let per2 = string_of_vect (per) (* and
+n=cherche_n 0 (fst !m) (snd !m) *) in
+            ecrire ("\n" ^ M ^ "   " ^ v2) fichier1; (*max, vecteur des déplacements*)
+            if a <> 0 then ecrire ("\n" ^ a2 ^ "   " ^ m1) fichier1;
+            ecrire ("\n" ^ b2 ^ "   " ^ per2 ^ "\n") fichier1;
+let l= cherche_n 0 per b in
+						ecrire (string_of_list(l)^"\n") fichier1;
+			(**)	ecrire (string_of_int(list_length l)^"\n") fichier1;
+            (a, b);;
+
+let strategie3 v= 
+let k=maxi v and n=vect_length v in
+strategie4 v (4*k*n);;
+
+(*strategie3 [|2;5;11;14;31;43;60;101|];;*)
+
+
+
+(*
+let rec insere2 a l=match l with
+|[]->[a]
+|b::c->if a<b then a::l
+else if a=b then l
+else b::insere2 a c;;
+
+let ensemble l=
+let rec ens l acc=
+match l with 
+|[]->acc
+|a::b->ens b (insere2 a acc)
+in ens l [];;
+*)

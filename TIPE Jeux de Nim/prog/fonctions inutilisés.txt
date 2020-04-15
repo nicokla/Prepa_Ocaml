@@ -1,0 +1,59 @@
+
+
+(* let ecrire chaine nom_fichier =
+  let ref canal_sortie = 
+open ("C:/Users/Nicolas K/Desktop/programmes/caml/" ^ nom_fichier ^ ".txt")
+[O_RDWR;O_CREAT] s_iwall;
+    output_string (!canal_sortie) chaine;
+    close (!canal_sortie);;  *)
+
+
+
+let ouvrir_fichier nom_fichier =
+  let canal_entree = open_in ("C:/Users/Nicolas K/Desktop/programmes/caml/" ^ nom_fichier ^ ".txt") in
+    let x = ref 1 in
+      let y = ref "" in
+        while !x = 1 do
+          let resultat =
+            try (input_line canal_entree)
+            with
+            | _ -> "" in
+            if resultat = "" then x := 0 else y := !y ^ resultat ^ "\n";
+        done;
+        close_in canal_entree;
+        !y;;
+
+let ecrire_par_dessus chaine nom_fichier =
+  let y = ref (ouvrir_fichier nom_fichier) in
+    let canal_sortie = open_out ("C:/Users/Nicolas K/Desktop/programmes/caml/" ^ nom_fichier ^ ".txt") in
+      y := !y ^ chaine;
+      output_string canal_sortie !y;
+      close_out canal_sortie;;
+
+
+let somme v =
+  let k = ref 0 in
+    for i = 0 to (vect_length v) - 1 do
+      k := !k + v.(i)
+    done;
+    k;;
+
+
+(*--------------------------------------*)
+(*sauvegarde, écriture des résultats dans test.txt*)
+
+let sauvegarde v max =
+  let a = string_of_vect (v)
+  and b = string_of_vect (test v max)
+  and M = string_of_int (max) in
+    ecrire("\n" ^M ^ "   " ^ a ^ "\n" ^ b ^"\n") "C:/test";;
+
+
+let sauvegarde2 v max =
+  let a = string_of_vect (v)
+  and b = string_of_vect (test2 v max)
+  and M = string_of_int (max) in
+    ecrire ("\n"^ M ^ "    " ^ a ^ "\n" ^ b^"\n") "C:/test.txt";;
+
+sauvegarde2 [|2;9|] 30;;
+
